@@ -1,0 +1,110 @@
+---
+layout: default
+title: Home
+---
+
+<!-- Welcome Section -->
+<section class="welcome-section">
+  <div class="wrapper">
+    <div class="welcome-panel">
+      <span class="corner corner--tl">✦</span>
+      <span class="corner corner--tr">✦</span>
+      <span class="corner corner--bl">✦</span>
+      <span class="corner corner--br">✦</span>
+
+      <p class="welcome-title">Welcome to Acqwa Archive.</p>
+      <p class="welcome-text">
+        This is a personal archive for translations, oshikatsu logs,<br>
+        and memories of the things and people I love.<br>
+        Please feel free to look around!
+      </p>
+      <p class="welcome-sig">nico</p>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Posts -->
+<section class="latest-section">
+  <div class="wrapper">
+    <div class="latest-grid">
+
+      <!-- Latest Translations -->
+      <div class="latest-panel">
+        <h2 class="latest-panel-title">Latest Translations</h2>
+        <ul class="post-list">
+          {% assign translations = site.translations | sort: 'date' | reverse %}
+          {% for post in translations limit:4 %}
+          <li class="post-list-item">
+            <div class="post-dot"></div>
+            <div class="post-list-meta">
+              <div class="post-list-date">{{ post.date | date: "%Y.%m.%d" }}</div>
+              <div class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </div>
+              {% if post.tags %}
+              <div class="post-list-tags">
+                {% for tag in post.tags limit:2 %}
+                  <span class="tag tag--stream">#{{ tag }}</span>
+                {% endfor %}
+                {% if post.new %}<span class="tag tag--new">New</span>{% endif %}
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% else %}
+          <li class="post-list-item">
+            <div class="post-dot"></div>
+            <div class="post-list-meta">
+              <div class="post-list-date">2024.05.20</div>
+              <div class="post-list-title" style="color: var(--text-secondary, #8fa3b8);">No translations yet — check back soon!</div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <a href="{{ '/translations/' | relative_url }}" class="view-all">
+          View All Translations <span class="view-all-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Latest Oshi Log -->
+      <div class="latest-panel">
+        <h2 class="latest-panel-title">Latest Oshi Log</h2>
+        {% assign oshi_posts = site.oshi_log | sort: 'date' | reverse %}
+        {% assign latest_oshi = oshi_posts | first %}
+        {% if latest_oshi %}
+        <div class="oshi-snippet">
+          <div class="oshi-date">{{ latest_oshi.date | date: "%Y.%m.%d" }}</div>
+          <p class="oshi-text">{{ latest_oshi.excerpt | strip_html | truncate: 160 }}</p>
+          {% if latest_oshi.images %}
+          <div class="oshi-images">
+            {% for img in latest_oshi.images limit:3 %}
+            <img src="{{ img }}" alt="oshi log image" style="border-radius: 4px;">
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="oshi-images">
+            <div class="oshi-img-placeholder">✦</div>
+            <div class="oshi-img-placeholder">✦</div>
+            <div class="oshi-img-placeholder">✦</div>
+          </div>
+          {% endif %}
+        </div>
+        {% else %}
+        <div class="oshi-snippet">
+          <div class="oshi-date">—</div>
+          <p class="oshi-text">No entries yet. Updates coming soon!</p>
+          <div class="oshi-images">
+            <div class="oshi-img-placeholder">✦</div>
+            <div class="oshi-img-placeholder">✦</div>
+            <div class="oshi-img-placeholder">✦</div>
+          </div>
+        </div>
+        {% endif %}
+        <a href="{{ '/oshi-log/' | relative_url }}" class="view-all">
+          View All Oshi Logs <span class="view-all-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

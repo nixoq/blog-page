@@ -1,0 +1,36 @@
+---
+layout: default
+title: Oshi Log
+permalink: /oshi-log/
+---
+
+<div class="archive-page">
+  <div class="archive-header">
+    <h1>Oshi Log</h1>
+    <p class="archive-sub">· memories, merch, and moments ·</p>
+  </div>
+
+  <ul class="archive-list">
+    {% assign oshi_posts = site.oshi_log | sort: 'date' | reverse %}
+    {% for post in oshi_posts %}
+    <li class="archive-item">
+      <div class="archive-dot"></div>
+      <span class="archive-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+      <div class="archive-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </div>
+      <div class="archive-tags">
+        {% for tag in post.tags limit:2 %}
+          <span class="tag tag--stream">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </li>
+    {% else %}
+    <li class="archive-item">
+      <div class="archive-dot"></div>
+      <span class="archive-date">—</span>
+      <div class="archive-title" style="color: #8fa3b8;">No entries yet. Updates coming soon!</div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

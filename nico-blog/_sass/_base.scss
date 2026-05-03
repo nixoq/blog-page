@@ -1,0 +1,129 @@
+// ── Acqwa Archive — Base ───────────────────────────────────
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: $bg-deep;
+  color: $text-primary;
+  font-family: $font-body;
+  font-size: 17px;
+  line-height: 1.75;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  // Subtle noise texture overlay
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+}
+
+a {
+  color: $accent-blue;
+  text-decoration: none;
+  transition: color $transition;
+  &:hover { color: $accent-glow; }
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3 { font-family: $font-heading; font-weight: 400; letter-spacing: 0.08em; }
+h4, h5, h6 { font-family: $font-sub; font-weight: 400; }
+
+p { margin-bottom: 1rem; }
+
+// Ornate divider
+.ornate-divider {
+  text-align: center;
+  color: $border-gold;
+  font-size: 1.1rem;
+  letter-spacing: 0.5em;
+  margin: 2rem 0;
+  opacity: 0.6;
+  &::before, &::after {
+    content: '── ✦ ──';
+  }
+}
+
+// Gold bordered panel
+.panel {
+  background: $bg-card;
+  border: 1px solid $border-gold;
+  border-radius: $radius-md;
+  position: relative;
+  padding: 1.5rem;
+
+  &::before, &::after {
+    content: '✦';
+    position: absolute;
+    color: $border-gold;
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+  &::before { top: 6px; left: 10px; }
+  &::after  { bottom: 6px; right: 10px; }
+}
+
+// Section title
+.section-title {
+  font-family: $font-heading;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $text-gold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+
+  &::before, &::after {
+    content: ' · ';
+    opacity: 0.5;
+  }
+}
+
+// Tag pill
+.tag {
+  display: inline-block;
+  font-family: $font-ui;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+
+  &--new { color: $accent-blue; border-color: $accent-blue; background: rgba($accent-blue, 0.1); }
+  &--stream { color: $text-gold; border-color: $border-gold; background: rgba($border-gold, 0.1); }
+}
+
+// Glow text
+.glow {
+  text-shadow: 0 0 20px rgba($accent-blue, 0.5), 0 0 40px rgba($accent-blue, 0.2);
+}
+
+// Wrapper
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// Page content area
+.page-content {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 0;
+}
+
+// Colored text helpers for posts
+.text-blue   { color: $accent-blue; }
+.text-gold   { color: $text-gold; }
+.text-muted  { color: $text-secondary; }
+.text-glow   { color: $accent-glow; text-shadow: 0 0 12px rgba($accent-blue, 0.6); }

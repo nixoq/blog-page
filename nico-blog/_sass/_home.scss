@@ -1,0 +1,246 @@
+// ── Acqwa Archive — Home ──────────────────────────────────
+
+// ── Welcome Section ──
+.welcome-section {
+  padding: 3rem 0 2rem;
+}
+
+.welcome-panel {
+  max-width: 800px;
+  margin: 0 auto;
+  background: $bg-card;
+  border: 1px solid rgba($border-gold, 0.4);
+  border-radius: $radius-md;
+  padding: 2.5rem 3rem;
+  position: relative;
+  text-align: center;
+
+  // Corner ornaments
+  .corner { position: absolute; color: $border-gold; font-size: 1.2rem; opacity: 0.5; line-height: 1; }
+  .corner--tl { top: 10px; left: 14px; }
+  .corner--tr { top: 10px; right: 14px; }
+  .corner--bl { bottom: 10px; left: 14px; }
+  .corner--br { bottom: 10px; right: 14px; }
+
+  .welcome-title {
+    font-family: $font-sub;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $text-primary;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .welcome-text {
+    font-family: $font-body;
+    font-size: 1rem;
+    color: $text-secondary;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .welcome-sig {
+    font-family: $font-sub;
+    font-style: italic;
+    color: $text-gold;
+    font-size: 1.1rem;
+    opacity: 0.85;
+
+    &::before { content: '— '; }
+  }
+}
+
+// ── Latest Posts Grid ──
+.latest-section {
+  padding: 2rem 0 4rem;
+}
+
+.latest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.latest-panel {
+  background: $bg-card;
+  border: 1px solid rgba($border-gold, 0.35);
+  border-radius: $radius-md;
+  padding: 1.75rem;
+  position: relative;
+
+  // Subtle top glow
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20%; right: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba($accent-blue, 0.4), transparent);
+  }
+}
+
+.latest-panel-title {
+  font-family: $font-heading;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $text-gold;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba($border-gold, 0.2);
+}
+
+// ── Post List (translation entries) ──
+.post-list {
+  list-style: none;
+}
+
+.post-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba($border-dim, 0.8);
+  transition: background $transition;
+
+  &:last-child { border-bottom: none; }
+  &:hover { background: rgba($accent-blue, 0.03); }
+
+  .post-dot {
+    width: 6px; height: 6px;
+    background: rgba($accent-blue, 0.4);
+    border: 1px solid $accent-blue;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+    transition: background $transition;
+  }
+  &:hover .post-dot { background: $accent-blue; }
+}
+
+.post-list-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-list-date {
+  font-family: $font-ui;
+  font-size: 0.65rem;
+  color: $text-secondary;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.post-list-title {
+  font-family: $font-body;
+  font-size: 0.9rem;
+  color: $text-primary;
+  line-height: 1.4;
+  transition: color $transition;
+
+  a {
+    color: inherit;
+    &:hover { color: $accent-blue; }
+  }
+}
+
+.post-list-tags {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  flex-wrap: wrap;
+}
+
+// ── Oshi Log snippet ──
+.oshi-snippet {
+  .oshi-date {
+    font-family: $font-ui;
+    font-size: 0.65rem;
+    color: $text-secondary;
+    margin-bottom: 0.5rem;
+  }
+
+  .oshi-text {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    color: $text-primary;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .oshi-images {
+    display: flex;
+    gap: 0.5rem;
+
+    .oshi-img-placeholder {
+      flex: 1;
+      aspect-ratio: 1;
+      background: rgba($bg-navy, 0.8);
+      border: 1px dashed rgba($border-gold, 0.2);
+      border-radius: $radius-sm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba($text-gold, 0.2);
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// ── View All link ──
+.view-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba($border-gold, 0.15);
+  font-family: $font-ui;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $text-secondary;
+  transition: color $transition;
+
+  &:hover {
+    color: $accent-blue;
+    .view-all-arrow { transform: translateX(3px); }
+  }
+
+  .view-all-arrow { transition: transform $transition; }
+}
+
+// ── Footer ──
+.site-footer {
+  background: $bg-panel;
+  border-top: 1px solid rgba($border-gold, 0.2);
+  padding: 2rem 0;
+  text-align: center;
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+
+    a {
+      color: $text-secondary;
+      font-size: 1.1rem;
+      transition: color $transition;
+      &:hover { color: $accent-blue; }
+    }
+  }
+
+  .footer-copy {
+    font-family: $font-ui;
+    font-size: 0.7rem;
+    color: rgba($text-secondary, 0.5);
+    letter-spacing: 0.1em;
+  }
+}

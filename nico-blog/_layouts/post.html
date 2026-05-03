@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<div class="post-page">
+  <header class="post-header">
+    <div class="post-category">{{ page.category | default: "archive" }}</div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>{{ page.date | date: "%Y.%m.%d" }}</span>
+      {% if page.source %}<span>· {{ page.source }}</span>{% endif %}
+    </div>
+    {% if page.tags %}
+    <div class="post-tags">
+      {% for tag in page.tags %}
+        <span class="tag tag--stream">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <!-- Post navigation -->
+  <nav class="post-nav">
+    {% if page.previous %}
+    <a href="{{ page.previous.url | relative_url }}" class="post-nav-link post-nav-link--prev">
+      <div class="nav-label">← Previous</div>
+      <div class="nav-title">{{ page.previous.title }}</div>
+    </a>
+    {% else %}<div></div>{% endif %}
+
+    {% if page.next %}
+    <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-link--next">
+      <div class="nav-label">Next →</div>
+      <div class="nav-title">{{ page.next.title }}</div>
+    </a>
+    {% endif %}
+  </nav>
+</div>

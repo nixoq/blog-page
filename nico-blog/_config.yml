@@ -1,0 +1,48 @@
+title: Acqwa Archive
+tagline: translations & oshikatsu archive
+description: A personal archive for translations, oshikatsu logs, and memories.
+baseurl: ""
+url: ""
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+
+# Collections
+collections:
+  translations:
+    output: true
+    permalink: /translations/:name/
+  oshi_log:
+    output: true
+    permalink: /oshi-log/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "translations"
+    values:
+      layout: "post"
+      category: "translation"
+  - scope:
+      path: ""
+      type: "oshi_log"
+    values:
+      layout: "post"
+      category: "oshi-log"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
